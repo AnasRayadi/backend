@@ -14,9 +14,11 @@ import org.instancio.Instancio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -29,7 +31,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
+@ExtendWith({MockitoExtension.class})
 class BookServiceTest {
 
     @Mock
@@ -42,10 +44,14 @@ class BookServiceTest {
     @InjectMocks
     private BookService bookService;
 
-
+    Long id = 1L;
+    Book book;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        book = Instancio.of(Book.class).create();
+        book.setId(id);
+        bookRepo.save(book);
     }
 
 
@@ -65,9 +71,9 @@ class BookServiceTest {
         @Test
         void itShouldDeleteBook(){
             // Given
-            Long id = 1L;
-            Book book = Instancio.of(Book.class).create();
-            when(bookRepo.findById(id)).thenReturn(Optional.of(book));
+//            Long id = 1L;
+//            Book book = Instancio.of(Book.class).create();
+//            when(bookRepo.findById(id)).thenReturn(Optional.of(book));
 
             // When
             bookService.deleteBook(id);

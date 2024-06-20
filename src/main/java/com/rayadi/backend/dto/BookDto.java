@@ -11,28 +11,28 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+import static com.rayadi.backend.constants.ErrorMessagesConstant.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDto {
     private Long id;
-    @NotNull(message = "Title is required")
+    @NotNull(message = TITLE_REQUIRED)
     private String title;
-    @NotNull(message = "Author is required")
+    @NotNull(message = AUTHOR_REQUIRED)
     private String author;
-    @NotNull(message = "Description is required")
-    @Size(min = 10, message = "Description must be at least 10 characters long")
+    @NotNull(message = DESCRIPTION_REQUIRED)
+    @Size(min = 10, message = DESCRIPTION_MIN_LENGTH)
     private String description;
-    @NotNull(message = "Image is required")
-    @Pattern(regexp = "(https?://.*\\.(?:png|jpg))", message = "Image must be a valid URL ending with .png or .jpg")
+    @NotNull(message = IMAGE_REQUIRED)
+    @Pattern(regexp = "(https?://.*\\.(?:png|jpg))", message = IMAGE_VALID_URL)
     private String image;
-    @NotNull(message = "Edition is required")
+    @NotNull(message = EDITION_REQUIRED)
     @ValidEditionDate
     private LocalDate edition;
-    @NotNull(message = "Category ID is required")
+    @NotNull(message = CATEGORY_ID_REQUIRED)
     private Integer categoryId;
-    @NotNull(message = "Price is required")
+    @NotNull(message = PRICE_REQUIRED)
     private double price;
-
 }
-
