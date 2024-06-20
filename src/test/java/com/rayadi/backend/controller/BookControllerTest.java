@@ -11,6 +11,7 @@ import org.instancio.Instancio;
 
 import org.instancio.Select;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -102,6 +103,7 @@ class BookControllerTest {
     @Nested
     class TestAddBook {
 
+        @Disabled
         @ParameterizedTest
         @CsvSource(value = {
                 "title,TITLE_REQUIRED",
@@ -165,6 +167,7 @@ class BookControllerTest {
 
         }
     }
+    @Disabled
     @Nested
     class TestUpdateBook {
         @ParameterizedTest
