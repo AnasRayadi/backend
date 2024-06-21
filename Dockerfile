@@ -1,4 +1,4 @@
-FROM maven:3.8.6-openjdk-11-slim AS build
+FROM maven:3.8.6-openjdk-17-slim AS build
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY src ./src
 
 RUN mvn clean install package -DskipTests
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:17-jre-slim
 
 WORKDIR /app
 
